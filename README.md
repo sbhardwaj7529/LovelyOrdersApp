@@ -17,8 +17,8 @@ This Django project provides a RESTful API to manage and retrieve customer order
 
 Clone the repository:
 
-`git clone https://github.com/sbhardwaj7529/LovelyOrdersApp.git`
-`cd LovelyOrdersApp`
+`git clone https://github.com/sbhardwaj7529/LovelyOrdersApp.git <br>
+cd LovelyOrdersApp`
 ### Setup mongodb
 
 Just run the shell script `setup_mongodb.sh` which would automatically download mongodb docker image, start its container, create database and credentials inside it. <br> Simply run: `./setup_mongodb.sh`
@@ -43,15 +43,15 @@ Note: if you want to stop and remove the spawned container later, then simply ru
 
 3. Exec inside the container and run migrations
 
-`docker exec -it bash` <br>
-`python manage.py migrate`
+`docker exec -it bash <br>
+python manage.py migrate`
 
 
 The API should now be accessible at http://localhost:8000
 
 ## Populate orders from the third-party API
 
-You can use the provided management command to populate your database with orders from the third-party API:
+You can use the provided management command to populate your database with orders from the third-party API (located at https://orders-staging-api-fc7lwmf3uq-el.a.run.app/orders/all ):
 
 `python manage.py populate_orders`
 
