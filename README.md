@@ -21,13 +21,13 @@ Clone the repository:
 `cd LovelyOrdersApp`
 ### Setup mongodb
 
-Just run the shell script `setup_mongodb.sh` which would automatically download mongodb docker image, start its container, create database and credentials inside it. Simply run: `./setup_mongodb.sh`
+Just run the shell script `setup_mongodb.sh` which would automatically download mongodb docker image, start its container, create database and credentials inside it. <br> Simply run: `./setup_mongodb.sh`
 
 Note: if you want to stop and remove the spawned container later, then simply run: `docker stop mongo-server && docker rm mongo-server`
 
 ### Setup redis
 
-Just run the shell script `setup_redis.sh` which would automatically download redis docker image, start its container, create database and credentials inside it. Simply run: `./setup_mongodb.sh`
+Just run the shell script `setup_redis.sh` which would automatically download redis docker image, start its container, create database and credentials inside it. <br> Simply run: `./setup_redis.sh`
 
 Note: if you want to stop and remove the spawned container later, then simply run: `docker stop redis-instance && docker rm redis-instance`
 ### Setup the Django app
@@ -43,8 +43,8 @@ Note: if you want to stop and remove the spawned container later, then simply ru
 
 3. Exec inside the container and run migrations
 
-`docker exec -it bash
-python manage.py migrate`
+`docker exec -it bash` <br>
+`python manage.py migrate`
 
 
 The API should now be accessible at http://localhost:8000
