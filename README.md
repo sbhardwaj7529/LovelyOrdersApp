@@ -84,14 +84,14 @@ The populate_orders function serves to fetch order data from an external API and
 ### API Endpoints
 The code defines three API views for an order management system using Django and Django Rest Framework:
 
-1. OrderById: This API view retrieves an order by its order_id. It inherits from the generics.RetrieveAPIView class provided by Django Rest Framework, which is specifically designed for handling single object retrieval. The view sets the following attributes:
+1. `OrderById`: This API view retrieves an order by its order_id. It inherits from the generics.RetrieveAPIView class provided by Django Rest Framework, which is specifically designed for handling single object retrieval. The view sets the following attributes:
 
 - queryset: The dataset the view should use is all Order objects in the database.
 - serializer_class: The OrderSerializer class is responsible for converting order data into a JSON format that can be sent as a response.
 - lookup_field: The field name used for looking up an order is 'order_id'.
 When a client sends a GET request to the endpoint associated with this view, the system will look for the order with the specified order_id and return its serialized data as a JSON response.
 
-2. AverageProductsInOrders: This API view calculates the average number of products across all orders. It inherits from the generics.GenericAPIView class, which is a base class for creating custom API views in Django Rest Framework. The view defines a get method that does the following:
+2. `AverageProductsInOrders`: This API view calculates the average number of products across all orders. It inherits from the generics.GenericAPIView class, which is a base class for creating custom API views in Django Rest Framework. The view defines a get method that does the following:
 
 - Check if the average number of products is available in the cache using the cache key "average_products".
 - If the cached value is not found, it retrieves all Order objects from the database.
@@ -100,7 +100,7 @@ When a client sends a GET request to the endpoint associated with this view, the
 - The calculated average is stored in the cache with a 5-minute expiration time.
 - Finally, it sends the average number of products as a JSON response to the client.
 
-3.AverageQuantityByProductId: This API view computes the average quantity of a specific product in all orders based on the product_id. Like AverageProductsInOrders, it also inherits from generics.GenericAPIView. The get method does the following:
+3. `AverageQuantityByProductId`: This API view computes the average quantity of a specific product in all orders based on the product_id. Like AverageProductsInOrders, it also inherits from generics.GenericAPIView. The get method does the following:
 
 - Build a cache key using the product_id, e.g., "average_quantity_1".
 - Check if the average quantity for the specified product is available in the cache.
