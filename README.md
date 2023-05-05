@@ -9,6 +9,7 @@ This Django project provides a RESTful API to manage and retrieve customer order
 - Fetch the average quantity of a single product from the orders using the product ID
 
 ## Prerequisites
+- Python 3
 - Docker
 
 ## Setup
@@ -17,12 +18,13 @@ This Django project provides a RESTful API to manage and retrieve customer order
 
 Clone the repository:
 
-`git clone https://github.com/sbhardwaj7529/LovelyOrdersApp.git <br>
-cd LovelyOrdersApp`
+`git clone https://github.com/sbhardwaj7529/LovelyOrdersApp.git` <br>
+`cd LovelyOrdersApp`
 ### Setup mongodb
 
-Just run the shell script `setup_mongodb.sh` which would automatically download mongodb docker image, start its container, create database and credentials inside it. <br> Simply run: `./setup_mongodb.sh`
-
+Just run the shell script `setup_mongodb.sh` which would automatically download mongodb docker image, start its container, create database and credentials inside it. <br> Simply run: `./setup_mongodb.sh` <br>
+(Please ignore console message `OCI runtime exec failed: exec failed: unable to start container process: exec: "mongo"` during this step.)
+<br>
 Note: if you want to stop and remove the spawned container later, then simply run: `docker stop mongo-server && docker rm mongo-server`
 
 ### Setup redis
@@ -32,19 +34,23 @@ Just run the shell script `setup_redis.sh` which would automatically download re
 Note: if you want to stop and remove the spawned container later, then simply run: `docker stop redis-instance && docker rm redis-instance`
 ### Setup the Django app
 
-1. Build the Docker image:
+2. Create a virtual environment and activate it:
 
-`docker build -t LovelyOrdersApp:latest .`
+`python3 -m venv venv` (or replace `python3` with `python` assuming that binary points to python 3 rather than python 2) <br>
+`source venv/bin/activate # On Windows: venv\Scripts\activate`
 
+2. Install the required packages:
 
-2. Run the Docker container:
+`pip install -r requirements.txt`
 
-`docker run -p 8000:8000 --name LovelyOrdersApp LovelyOrdersApp:latest`
+3. In another terminal tab, `cd` to that repo again and run migrations:
 
-3. Exec inside the container and run migrations
+`python manage.py showmigrations` <br>
+`python manage.py migrate`
 
-`docker exec -it bash <br>
-python manage.py migrate`
+4. Run the Django development server:
+
+`python manage.py runserver`
 
 
 The API should now be accessible at http://localhost:8000
