@@ -43,7 +43,7 @@ Note: if you want to stop and remove the spawned container later, then simply ru
 
 `pip install -r requirements.txt`
 
-3. In another terminal tab, `cd` to that repo again and run migrations:
+3. Now, `cd` into the directory containing `manage.py` file, and run migrations:
 
 `python manage.py showmigrations` <br>
 `python manage.py migrate`
